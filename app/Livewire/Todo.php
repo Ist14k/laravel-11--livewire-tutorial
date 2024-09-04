@@ -8,20 +8,32 @@ class Todo extends Component
 {
     public string $task = '';
 
-    public array $tasks = [
-        [
-            "id" => "1",
-            "name" => "Go to the store",
-        ],
-        [
-            "id" => "2",
-            "name" => "Buy some food",
-        ],
-        [
-            "id" => "3",
-            "name" => "Prepare dinner",
-        ],
-    ];
+    public array $tasks = [];
+
+    // lifecycle hooks
+    public function mount()
+    {
+        $this->tasks = [
+            [
+                "id" => 1,
+                "name" => "Task 1",
+            ],
+            [
+                "id" => 2,
+                "name" => "Task 2",
+            ],
+            [
+                "id" => 3,
+                "name" => "Task 3",
+            ],
+        ];
+    }
+
+    // lifecycle hooks
+    public function updatedTask($value)
+    {
+        $this->task = strtoupper($value);
+    }
 
     public function addTask()
     {
